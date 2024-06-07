@@ -7,12 +7,12 @@ POST http://localhost:3000/notes/new
 Content-Type: application/json
 
 {
-  "title": "New Note",
-  "content": "This is the content of the new note."
+  "title": "Test Note",
+  "content": "Guess it works."
 }
 
 ### Test GET note by ID
-GET http://localhost:3000/notes/note/1
+GET http://localhost:3000/notes/note/3
 Accept: application/json
 
 ### Test PUT update note
@@ -20,8 +20,8 @@ PUT http://localhost:3000/notes/update/1
 Content-Type: application/json
 
 {
-  "title": "Updated Note Title",
-  "content": "This is the updated content."
+  "title": "Check updated note",
+  "content": "Huh! Still Doubting?!."
 }
 
 ### Test DELETE note
