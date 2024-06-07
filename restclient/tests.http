@@ -1,0 +1,29 @@
+### Test GET all notes
+GET http://localhost:3000/notes/all
+Accept: application/json
+
+### Test POST create note
+POST http://localhost:3000/notes/new
+Content-Type: application/json
+
+{
+  "title": "New Note",
+  "content": "This is the content of the new note."
+}
+
+### Test GET note by ID
+GET http://localhost:3000/notes/note/1
+Accept: application/json
+
+### Test PUT update note
+PUT http://localhost:3000/notes/update/1
+Content-Type: application/json
+
+{
+  "title": "Updated Note Title",
+  "content": "This is the updated content."
+}
+
+### Test DELETE note
+DELETE http://localhost:3000/notes/delete/2
+Accept: application/json

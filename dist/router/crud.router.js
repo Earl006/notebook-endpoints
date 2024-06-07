@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const note_controller_1 = require("../controllers/note.controller");
+const crudRouter = (0, express_1.Router)();
+crudRouter.post('/new', note_controller_1.createNote);
+crudRouter.get('/all', note_controller_1.getAllNotes);
+crudRouter.get('/note/:id', note_controller_1.getNoteById);
+crudRouter.put('/update/:id', note_controller_1.updateNote);
+crudRouter.delete('/delete/:id', note_controller_1.deleteNote);
+exports.default = crudRouter;
