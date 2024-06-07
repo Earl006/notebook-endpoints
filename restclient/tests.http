@@ -16,7 +16,7 @@ GET http://localhost:3000/notes/note/3
 Accept: application/json
 
 ### Test PUT update note
-PUT http://localhost:3000/notes/update/1
+PUT http://localhost:3000/notes/update/3
 Content-Type: application/json
 
 {

@@ -8,9 +8,9 @@ export class NotesService {
       const result = await pool.request()
         .input('title', sql.NVarChar, title)
         .input('content', sql.NVarChar, content)
-        .query('INSERT INTO Notes (Title, Content) VALUES (@title, @content)');
-      
-      console.log(`Note created with ID: ${result.recordset[0]?.id}`);
+        .query('INSERT INTO Notes (Title, Content) OUTPUT INSERTED.Id VALUES (@title, @content)');
+
+      console.log(`Note created with ID: ${result.recordset[0].Id}`);
     } catch (err) {
       console.error('Error creating note:', err);
     }
@@ -65,7 +65,7 @@ export class NotesService {
         .query('SELECT * FROM Notes WHERE Id = @id');
 
       if (result.recordset.length === 0) {
-        return null; 
+        return null;
       }
 
       return result.recordset[0];
