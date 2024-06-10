@@ -16,7 +16,7 @@ GET http://localhost:3000/notes/note/3
 Accept: application/json
 
 ### Test PUT update note
-PUT http://localhost:3000/notes/update/3
+PUT http://localhost:3000/notes/update/ebd474c3-7ad5-4244-ad9a-756b16297e7a
 Content-Type: application/json
 
 {
@@ -25,5 +25,5 @@ Content-Type: application/json
 }
 
 ### Test DELETE note
-DELETE http://localhost:3000/notes/delete/2
+DELETE http://localhost:3000/notes/delete/5
 Accept: application/json
