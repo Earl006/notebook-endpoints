@@ -73,7 +73,7 @@
 .note:hover{
     transform: translateY(-10px);
 }
-.add-habit{
+.add-note{
     margin-top: 2%;
     background-color: #28333f;
     border-radius: 10px;
@@ -82,7 +82,146 @@
     height: 40px;
     color: #fff;
 }
-.add-habit:hover{
+.add-note:hover{
     background-color: #424a53;
 
+}
+.note-add {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    padding: 5%;
+}
+
+.note-add input[type="text"], .note-add textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.note-add button {
+    background-color: #0d4888;
+    border-radius: 10px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    margin: 5%;
+}
+
+.note-add button:hover {
+    background-color: #314761;
+}
+.note-add div{
+    margin: 5%;
+    justify-content: space-between;
+}
+#cancel{
+    background-color: #424a53;
+    border-radius: 10px;
+    border: none;
+    width:100px;
+    height: 40px;
+    color: #fff;
+}
+#cancel:hover{
+    background-color: #363c42;
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+.note-edit {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    padding: 5%;
+}
+
+.note-edit input[type="text"], .note-edit textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.note-edit button {
+    background-color: #0d4888;
+    border-radius: 10px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    margin: 5%;
+}
+
+.note-edit button:hover {
+    background-color: #314761;
+}
+.note-edit div{
+    margin: 5%;
+    justify-content: space-between;
+}
+#cancel-edit{
+    background-color: #424a53;
+    border-radius: 10px;
+    border: none;
+    width:100px;
+    height: 40px;
+    color: #fff;
+}
+#cancel-edit:hover{
+    background-color: #363c42;
+}
+.note-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    width: 400px;
+    height: fit-content;
+    border: solid 1px #314761;
+}
+
+#cancelbtn{
+    background-color: #f70909;
+    border-radius: 10px;
+    border: none;
+    width:100px;
+    height: 40px;
+    color: #fff;
+}
+#cancelbtn:hover{
+    background-color: #eb4c4c;
 }

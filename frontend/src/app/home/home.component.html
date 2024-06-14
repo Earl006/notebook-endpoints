@@ -10,7 +10,7 @@
 
   <section class="notes-section">
     <h2>My Notes</h2>
-    <button class="add-habit" id="add-habit">Add a New Note</button>
+    <button class="add-note" id="add-note">Add a New Note</button>
     <div class="notes">
         
         <div class="note">
@@ -18,4 +18,57 @@
             <p>Exercise for 30 minutes</p>
             <button>Done</button>
         </div>
+        <div id="overlay">
+            <form action="" id="note-add" class="note-add">
+                <h2>Add a New Note</h2>
+                <div>
+                <label for="note-title">Note Title</label>
+                <input type="text" id="note-title" placeholder="Enter Note Title">
+                </div>
+                <div>
+                <label for="note-content">Note Content</label>
+                
+                <textarea type="text" name="note-content" placeholder="Enter the Content for your Note" id="note-content"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Add Note</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+                
+            </form>
+            </div>
+            <div id="overlay">
+                <form action="" id="note-edit" class="note-edit">
+                    <h2>Edit Note</h2>
+                    <div>
+                    <label for="note-title">Note Title</label>
+                    <input type="text" id="noteTitle">
+                    </div>
+                    <div>
+                    <label for="note-content">Note Content</label>
+                    
+                    <textarea type="text" name="note-content" id="noteContent"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">Edit Note</button>
+                        <button id="cancel-edit">Cancel</button>
+                    </div>
+                    
+                </form>
+                </div>
+            <div id="overlay">
+            <div class="note-details">
+                
+                <h2>Habit Details</h2>
+                <div class="note-detail">
+                    <h3>Exercise</h3>
+                    <p>Exercise for 30 minutes</p>
+                    <p>Start Date: 12th August 2021</p>
+                    <p>Current Streak: 5</p>
+                    <p>Best Streak: 10</p>
+                    <button id="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
      <section>
+    
