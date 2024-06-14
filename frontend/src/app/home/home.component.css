@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+.cover-section{
+    background:#28333f;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-image img{
+    width: 30%;
+    height: 50%;
+    float: left;
+    margin-left: 10%;
+}
+
+.cover-image h1{
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Dancing Script', cursive;
+}
+.cover-image p{
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+}
+.cover-image h2{
+    font-family: 'Dancing Script', cursive;
+}
+.notes-section{
+    padding: 50px 0;
+    text-align: center;
+   
+}
+.notes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.note{
+    margin-top: 5%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: solid 1px #28333f;
+    transition: 0.3s;
+    cursor: pointer;
+    width: 300px;
+    height: fit-content;
+
+}
+.note button{
+    background-color: #28333f;
+    border-radius: 10px;
+    border: none;
+    width:100px;
+    height: 40px;
+    color: #fff;
+
+}
+.note button:hover{
+    background-color: #424a53;
+}
+.note:hover{
+    transform: translateY(-10px);
+}
+.add-habit{
+    margin-top: 2%;
+    background-color: #28333f;
+    border-radius: 10px;
+    border: none;
+    width:130px;
+    height: 40px;
+    color: #fff;
+}
+.add-habit:hover{
+    background-color: #424a53;
+
+}
