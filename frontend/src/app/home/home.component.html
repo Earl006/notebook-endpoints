@@ -10,16 +10,19 @@
 
   <section class="notes-section">
     <h2>My Notes</h2>
-    <button class="add-note" id="add-note">Add a New Note</button>
+    <button class="add-note" id="add-note" (click)="toggleAddNoteModal()">Add a New Note</button>
     <div class="notes">
         
-        <div class="note">
+        <div class="note" (click)="toggleNoteDetails()">
             <h3>Exercise</h3>
             <p>Exercise for 30 minutes</p>
-            <button>Done</button>
+            <button (click)="toggleEditNoteModal(); $event.stopPropagation()">Edit</button>
+            <button (click)="$event.stopPropagation()">Delete</button>
         </div>
-        <div id="overlay">
-            <form action="" id="note-add" class="note-add">
+        <div id="overlay" *ngIf="showAddNoteModal || showEditNoteModal || showNoteDetails" [ngStyle]="{'display': showAddNoteModal || showEditNoteModal || showNoteDetails ? 'block' : 'none'}">
+        </div>
+        <div *ngIf="showAddNoteModal" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
+            <form action="" id="note-add" class="note-add" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
                 <h2>Add a New Note</h2>
                 <div>
                 <label for="note-title">Note Title</label>
@@ -37,8 +40,8 @@
                 
             </form>
             </div>
-            <div id="overlay">
-                <form action="" id="note-edit" class="note-edit">
+            <div  *ngIf="showEditNoteModal" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
+                <form action="" id="note-edit" class="note-edit" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
                     <h2>Edit Note</h2>
                     <div>
                     <label for="note-title">Note Title</label>
@@ -56,8 +59,8 @@
                     
                 </form>
                 </div>
-            <div id="overlay">
-            <div class="note-details">
+            <div *ngIf="showNoteDetails" [ngStyle]="{'display': showNoteDetails ? 'block' : 'none'}">
+            <div class="note-details" [ngStyle]="{'display': showNoteDetails ? 'block' : 'none'}">
                 
                 <h2>Habit Details</h2>
                 <div class="note-detail">
