@@ -1,11 +1,11 @@
 export class Note {
-    id?: string;
-    title: string;
-    content: string;
+    Id?: string;
+    Title: string;
+    Content: string;
   
-    constructor(title: string, content: string, id?: string) {
-      this.title = title;
-      this.content = content;
-      this.id = id;
+    constructor(Title: string, Content: string, Id?: string) {
+      this.Title = Title;
+      this.Content = Content;
+      this.Id = Id;
     }
   }

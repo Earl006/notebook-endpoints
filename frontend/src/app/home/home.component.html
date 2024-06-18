@@ -11,67 +11,61 @@
   <section class="notes-section">
     <h2>My Notes</h2>
     <button class="add-note" id="add-note" (click)="toggleAddNoteModal()">Add a New Note</button>
-    <div class="notes">
+    <div class="notes" >
         
-        <div class="note" (click)="toggleNoteDetails()">
-            <h3>Exercise</h3>
-            <p>Exercise for 30 minutes</p>
+        <div class="note" (click)="toggleNoteDetails()" *ngFor="let note of notes; let i = index;">
+            <h3>{{note.Title}}</h3>
+            <!-- <h3>{{note.Title | reverse}}</h3> -->
+            <p>{{note.Content}}</p>
             <button (click)="toggleEditNoteModal(); $event.stopPropagation()">Edit</button>
-            <button (click)="$event.stopPropagation()">Delete</button>
+            <button (click)="note.Id ? deleteNote(note.Id) : null; $event.stopPropagation()">Delete</button>
         </div>
         <div id="overlay" *ngIf="showAddNoteModal || showEditNoteModal || showNoteDetails" [ngStyle]="{'display': showAddNoteModal || showEditNoteModal || showNoteDetails ? 'block' : 'none'}">
         </div>
         <div *ngIf="showAddNoteModal" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
-            <form action="" id="note-add" class="note-add" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
-                <h2>Add a New Note</h2>
-                <div>
+            <form (ngSubmit)="createNote(title.value, content.value)" id="note-add" class="note-add" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
+              <h2>Add a New Note</h2>
+              <div>
                 <label for="note-title">Note Title</label>
-                <input type="text" id="note-title" placeholder="Enter Note Title">
-                </div>
-                <div>
+                <input type="text" id="note-title" placeholder="Enter Note Title" name="newNoteTitle" #title>
+              </div>
+              <div>
                 <label for="note-content">Note Content</label>
-                
-                <textarea type="text" name="note-content" placeholder="Enter the Content for your Note" id="note-content"></textarea>
-                </div>
-                <div>
-                    <button type="submit">Add Note</button>
-                    <button id="cancel">Cancel</button>
-                </div>
-                
+                <textarea name="newNoteContent" placeholder="Enter the Content for your Note" id="note-content" #content></textarea>
+              </div>
+              <div>
+                <button type="submit">Add Note</button>
+                <button id="cancel" (click)="toggleAddNoteModal()">Cancel</button>
+              </div>
             </form>
-            </div>
-            <div  *ngIf="showEditNoteModal" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
-                <form action="" id="note-edit" class="note-edit" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
-                    <h2>Edit Note</h2>
-                    <div>
-                    <label for="note-title">Note Title</label>
-                    <input type="text" id="noteTitle">
-                    </div>
-                    <div>
-                    <label for="note-content">Note Content</label>
-                    
-                    <textarea type="text" name="note-content" id="noteContent"></textarea>
-                    </div>
-                    <div>
-                        <button type="submit">Edit Note</button>
-                        <button id="cancel-edit">Cancel</button>
-                    </div>
-                    
-                </form>
-                </div>
+          </div>
+          <div *ngIf="showEditNoteModal" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
+            <form #editNoteForm="ngForm" id="note-edit" class="note-edit" [ngStyle]="{'display': showEditNoteModal ? 'block' : 'none'}">
+              <h2>Edit Note</h2>
+              <div>
+                <label for="note-title">Note Title</label>
+                <input type="text" id="noteTitle" name="editNoteTitle" [(ngModel)]="editNoteTitle">
+              </div>
+              <div>
+                <label for="note-content">Note Content</label>
+                <textarea name="editNoteContent" id="noteContent" [(ngModel)]="editNoteContent"></textarea>
+              </div>
+              <div>
+                <button type="button" (click)="updateNote()" [disabled]="!selectedNote">Edit Note</button>
+                <button id="cancel-edit" (click)="toggleEditNoteModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
             <div *ngIf="showNoteDetails" [ngStyle]="{'display': showNoteDetails ? 'block' : 'none'}">
-            <div class="note-details" [ngStyle]="{'display': showNoteDetails ? 'block' : 'none'}">
-                
-                <h2>Habit Details</h2>
-                <div class="note-detail">
-                    <h3>Exercise</h3>
-                    <p>Exercise for 30 minutes</p>
-                    <p>Start Date: 12th August 2021</p>
-                    <p>Current Streak: 5</p>
-                    <p>Best Streak: 10</p>
-                    <button id="cancelbtn">Cancel</button>
+                <div class="note-details" [ngStyle]="{'display': showNoteDetails ? 'block' : 'none'}">
+                    <h2>Note Details</h2>
+                    <div class="note-detail" *ngIf="selectedNote">
+                      <h3>{{ selectedNote.Title }}</h3>
+                      <p>{{ selectedNote.Content }}</p>
+                      <button id="cancelbtn" (click)="toggleNoteDetails()">Close</button>
                     </div>
-                </div>
+                  </div>
+                  
             </div>
      <section>
     

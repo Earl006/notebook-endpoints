@@ -109,7 +109,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+.note-add textarea{
+    height:200px;
+}
 .note-add button {
     background-color: #0d4888;
     border-radius: 10px;
@@ -170,7 +172,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+.note-edit textarea{
+    height:200px;
+}
 .note-edit button {
     background-color: #0d4888;
     border-radius: 10px;
