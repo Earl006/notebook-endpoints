@@ -7,8 +7,8 @@ POST http://localhost:3000/notes/new
 Content-Type: application/json
 
 {
-  "title": "Test Note",
-  "content": "Guess it works."
+  "title": "New Note",
+  "content": "Add Delete."
 }
 
 ### Test GET note by ID
@@ -16,7 +16,7 @@ GET http://localhost:3000/notes/note/8723b9e3-8684-46a8-b35c-bfb22d47f4e4
 Accept: application/json
 
 ### Test PUT update note
-PUT http://localhost:3000/notes/update/8723b9e3-8684-46a8-b35c-bfb22d47f4e4
+PUT http://localhost:3000/notes/update/F2D61449-DA29-4899-A8B8-50DB85A80B2B
 Content-Type: application/json
 
 {
@@ -25,5 +25,5 @@ Content-Type: application/json
 }
 
 ### Test DELETE note
-DELETE http://localhost:3000/notes/delete/8723b9e3-8684-46a8-b35c-bfb22d47f4e4
+DELETE http://localhost:3000/notes/delete/4627ACEC-F809-4187-9E07-F73453FFF2B1
 Accept: application/json

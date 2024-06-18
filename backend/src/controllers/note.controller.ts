@@ -6,6 +6,7 @@ const notesService = new NotesService();
 export const createNote = async (req: Request, res: Response) => {
   try {
     const { title, content } = req.body;
+    console.log(`Received note with title: ${title} and content: ${content}`); 
     await notesService.createNote(title, content);
     res.status(201).json({ message: 'Note created' });
   } catch (err: any) {
