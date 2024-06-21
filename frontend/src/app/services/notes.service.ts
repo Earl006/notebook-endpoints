@@ -29,20 +29,13 @@ export class NoteService {
     return this.http.post<Note>(url, notePayload, { headers });
   }
 
-  updateNote(note: Note): Observable<Note> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const url = `${this.baseUrl}/update/${note.Id}`;
-    console.log(note.Id);
-    
-    return this.http.put<Note>(url, note, { headers })
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  private handleError(error: any): Observable<never> {
-    console.error('An error occurred:', error);
-    return throwError('Something went wrong; please try again later.');
+  updateNote(note: Note): Observable<any> {
+    const lowercaseNote = {
+      id: note.Id,
+      title: note.Title,
+      content: note.Content
+    };
+    return this.http.put(`${this.baseUrl}/update/${note.Id}`, lowercaseNote);
   }
 
 

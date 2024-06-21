@@ -95,21 +95,19 @@ export class HomeComponent {
   
   updateNote() {
     if (this.selectedNote) {
-      const updatedNote = {
-        ...this.selectedNote,
+      const updatedNote: Note = {
+        Id: this.selectedNote.Id,
         Title: this.editNoteTitle,
         Content: this.editNoteContent
       };
-  console.log('Sending updated note:', updatedNote);
+      console.log('Sending updated note:', updatedNote);
   
-      const updatedNoteLowerCase = this.convertKeysToLowercase(updatedNote) as Note;
-  
-      this.noteService.updateNote(updatedNoteLowerCase).subscribe(
+      this.noteService.updateNote(updatedNote).subscribe(
         (response) => {
-          const index = this.notes.findIndex(n => n.Id === updatedNoteLowerCase.Id);
+          const index = this.notes.findIndex(n => n.Id === updatedNote.Id);
           
           if (index !== -1) {
-            this.notes[index] = updatedNoteLowerCase;
+            this.notes[index] = updatedNote;
           }
           this.showEditNoteModal = false;
         },
