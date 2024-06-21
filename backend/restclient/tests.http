@@ -16,7 +16,7 @@ GET http://localhost:3000/notes/note/8723b9e3-8684-46a8-b35c-bfb22d47f4e4
 Accept: application/json
 
 ### Test PUT update note
-PUT http://localhost:3000/notes/update/F2D61449-DA29-4899-A8B8-50DB85A80B2B
+PUT http://localhost:3000/notes/update/EE926D9F-9240-4D6A-BCA3-4C9CAB7F7816
 Content-Type: application/json
 
 {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Note } from '../models/note.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,19 @@ export class NoteService {
   updateNote(note: Note): Observable<Note> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const url = `${this.baseUrl}/update/${note.Id}`;
-    return this.http.put<Note>(url, note);
+    console.log(note.Id);
+    
+    return this.http.put<Note>(url, note, { headers })
+      .pipe(
+        catchError(this.handleError)
+      );
   }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong; please try again later.');
+  }
+
 
   deleteNote(id: string): Observable<void> {
     const url = `${this.baseUrl}/delete/${id}`;

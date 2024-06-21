@@ -6,6 +6,7 @@ import { NoteService } from '../services/notes.service';
 import { FormsModule } from '@angular/forms'; 
 import { ReversePipe } from '../pipes/reverse.pipe';
 import { NgForm } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-home',
@@ -28,8 +29,12 @@ export class HomeComponent {
   newNoteContent: string = '';
   editNoteTitle: string = '';
   editNoteContent: string = '';
+
   selectNoteForDetails(note: Note) {
     this.selectedNote = note;
+    this.selectedNote.Title = note.Title;
+    this.selectedNote.Content = note.Content;
+
     this.showNoteDetails = true;
   }
   constructor(private noteService: NoteService) { }
@@ -95,12 +100,16 @@ export class HomeComponent {
         Title: this.editNoteTitle,
         Content: this.editNoteContent
       };
+  console.log('Sending updated note:', updatedNote);
   
-      this.noteService.updateNote(updatedNote).subscribe(
+      const updatedNoteLowerCase = this.convertKeysToLowercase(updatedNote) as Note;
+  
+      this.noteService.updateNote(updatedNoteLowerCase).subscribe(
         (response) => {
-          const index = this.notes.findIndex(n => n.Id === updatedNote.Id);
+          const index = this.notes.findIndex(n => n.Id === updatedNoteLowerCase.Id);
+          
           if (index !== -1) {
-            this.notes[index] = updatedNote;
+            this.notes[index] = updatedNoteLowerCase;
           }
           this.showEditNoteModal = false;
         },
@@ -108,11 +117,11 @@ export class HomeComponent {
           console.error('Error updating note:', error);
         }
       );
-    }else{
+    } else {
       console.warn('Please select a note to update.');
-    
     }
   }
+ 
   
   deleteNote(noteId: string) {
     this.noteService.deleteNote(noteId).subscribe(
@@ -127,16 +136,17 @@ export class HomeComponent {
       }
     );
   }
-  ngAfterViewInit() {
-    if (this.selectedNote) {
-      this.editNoteTitle = this.selectedNote.Title;
-      this.editNoteContent = this.selectedNote.Content;
-    }
-  }
+  // ngAfterViewInit() {
+  //   if (this.selectedNote) {
+  //     this.editNoteTitle = this.selectedNote.Title;
+  //     this.editNoteContent = this.selectedNote.Content;
+  //   }
+  // }
   selectNoteForEdit(note: Note) {
-    this.selectedNote = { ...note };
+    this.selectedNote = note;
     this.editNoteTitle = note.Title;
     this.editNoteContent = note.Content;
+
     this.toggleEditNoteModal();
   }
   toggleAddNoteModal() {

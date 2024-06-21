@@ -220,7 +220,7 @@
 }
 
 #cancelbtn{
-    background-color: #f70909;
+    background-color: #28333f;
     border-radius: 10px;
     border: none;
     width:100px;
@@ -228,5 +228,5 @@
     color: #fff;
 }
 #cancelbtn:hover{
-    background-color: #eb4c4c;
+    background-color: #314761;
 }
