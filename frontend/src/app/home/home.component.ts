@@ -43,16 +43,15 @@ export class HomeComponent {
   }
   
   getNotes() {
-    this.noteService.getNotes().subscribe(
-      (notes) => {
+    this.noteService.getNotes().subscribe({
+      next: (notes) => {
         this.notes = notes;
         console.log(notes);
-        
       },
-      (error) => {
+      error: (error) => {
         console.error('Error fetching notes:', error);
       }
-    );
+    });
   }
   convertKeysToLowercase(obj: { [key: string]: any }): { [key: string]: any } {
     const convertedObj: { [key: string]: any } = {};
@@ -67,30 +66,26 @@ export class HomeComponent {
   
   
   createNote(title: string, content: string) {
-    // if (this.newNoteTitle.trim() && this.newNoteContent.trim()) {
-      if (title.trim() && content.trim()) {
-      // const newNote = { Title: this.newNoteTitle, Content: this.newNoteContent } as Note;
-      // console.log('Sending note:', newNote); // Debug log
-      // const newNote = { Title: title, Content: content } as Note;
-      const newNote = this.convertKeysToLowercase({ Title: title, Content: content }) as Note;
+  if (title.trim() && content.trim()) {
+    const newNote = this.convertKeysToLowercase({ Title: title, Content: content }) as Note;
 
-      this.noteService.createNote(newNote).subscribe(
-        (createdNote) => {
-          console.log(`Note created with title: ${createdNote.Title} and content: ${createdNote.Content}`);
-          this.notes.push(createdNote);
-          this.showAddNoteModal = false;
-          this.newNoteTitle = '';
-          this.newNoteContent = '';
-          this.getNotes();
-        },
-        (error) => {
-          console.error('Error creating note:', error);
-        }
-      );
-    } else {
-      console.warn('Please enter a title and content for the new note.');
-    }
+    this.noteService.createNote(newNote).subscribe({
+      next: (createdNote) => {
+        console.log(`Note created with title: ${createdNote.Title} and content: ${createdNote.Content}`);
+        this.notes.push(createdNote);
+        this.showAddNoteModal = false;
+        this.newNoteTitle = '';
+        this.newNoteContent = '';
+        this.getNotes();
+      },
+      error: (error) => {
+        console.error('Error creating note:', error);
+      }
+    });
+  } else {
+    console.warn('Please enter a title and content for the new note.');
   }
+}
   
   
   updateNote() {
@@ -102,8 +97,8 @@ export class HomeComponent {
       };
       console.log('Sending updated note:', updatedNote);
   
-      this.noteService.updateNote(updatedNote).subscribe(
-        (response) => {
+      this.noteService.updateNote(updatedNote).subscribe({
+        next:(response) => {
           const index = this.notes.findIndex(n => n.Id === updatedNote.Id);
           
           if (index !== -1) {
@@ -111,10 +106,10 @@ export class HomeComponent {
           }
           this.showEditNoteModal = false;
         },
-        (error) => {
+        error:(error) => {
           console.error('Error updating note:', error);
         }
-      );
+    });
     } else {
       console.warn('Please select a note to update.');
     }
@@ -122,17 +117,17 @@ export class HomeComponent {
  
   
   deleteNote(noteId: string) {
-    this.noteService.deleteNote(noteId).subscribe(
-      () => {
+    this.noteService.deleteNote(noteId).subscribe({
+      next: () => {
         this.notes = this.notes.filter(note => note.Id !== noteId);
         console.log('Note deleted successfully.');
         this.getNotes();
         
       },
-      (error) => {
+      error: (error) => {
         console.error('Error deleting note:', error);
       }
-    );
+  });
   }
   // ngAfterViewInit() {
   //   if (this.selectedNote) {

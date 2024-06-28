@@ -13,13 +13,14 @@
     <button class="add-note" id="add-note" (click)="toggleAddNoteModal()">Add a New Note</button>
     <div class="notes" >
         
-        <div class="note" (click)="selectNoteForDetails(note)" *ngFor="let note of notes; let i = index;">
+        <div class="note" id="note" (click)="selectNoteForDetails(note)" *ngFor="let note of notes; let i = index;">
             <h3>{{note.Title}}</h3>
             <!-- <h3>{{note.Title | reverse}}</h3> -->
             <p>{{note.Content}}</p>
             <button (click)="selectNoteForEdit(note); $event.stopPropagation();">Edit</button>
             <button (click)="note.Id ? deleteNote(note.Id) : null; $event.stopPropagation()">Delete</button>
         </div>
+    </div>
         <div id="overlay" *ngIf="showAddNoteModal || showEditNoteModal || showNoteDetails" [ngStyle]="{'display': showAddNoteModal || showEditNoteModal || showNoteDetails ? 'block' : 'none'}">
         </div>
         <div *ngIf="showAddNoteModal" [ngStyle]="{'display': showAddNoteModal ? 'block' : 'none'}">
